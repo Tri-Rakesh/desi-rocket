@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/desi-rocket && cp ./dist/index.html ./dist/404.html",
+    "build": "vite build --base=/desi-rocket",
     "lint": "eslint .",
     "preview": "vite preview"
   },
