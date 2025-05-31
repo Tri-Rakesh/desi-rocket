@@ -24,6 +24,9 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Change permission
+        run: chmod -c -R +rX dist
+
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
         with:
