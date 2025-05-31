@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: import.meta.env.PROD ? "/desi-rocket" : "/",
     element: <Pages.Auth />,
     children: [
       {
@@ -38,9 +38,7 @@ const queryClient = new QueryClient({
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <TooltipContextProvider>
-        <RouterProvider router={router} />
-      </TooltipContextProvider>
+      <RouterProvider router={router} />
     </QueryClientProvider>
   </StrictMode>
 );
