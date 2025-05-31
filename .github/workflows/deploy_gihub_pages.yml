@@ -24,25 +24,11 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Archive artifact
-        shell: sh
-        run: |
-          chmod -c -R +rX dist | while read line; do
-            echo "::warning title=Invalid file permissions automatically fixed::$line"
-          done
-          tar \
-            --dereference --hard-dereference \
-            --directory dist \
-            -cvf gh-pages-artifact.tar \
-            --exclude=.git \
-            --exclude=.github \
-            .
-
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: gh-pages-artifact.tar
+          path: './dist'
 
   deploy:
     name: Deploy
@@ -59,6 +45,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
