@@ -18,7 +18,7 @@ export const router = (
       {
         path: "games",
         children: [
-          { element: <Games /> },
+          { index: true, element: <Games /> },
           { path: ":id", element: <GameById /> },
         ],
       },
