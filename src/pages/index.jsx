@@ -1,12 +1,14 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, createHashRouter } from "react-router-dom";
 import Auth from "@/pages/Auth";
 import Home from "@/pages/Home";
 import Games from "@/pages/Games";
 import GameById from "@/pages/Games/GameById";
 
-export const router = createBrowserRouter([
+export const router = (
+  import.meta.env.PROD ? createHashRouter : createBrowserRouter
+)([
   {
-    path: import.meta.env.PROD ? "/desi-rocket" : "/",
+    path: "/",
     element: <Auth />,
     children: [
       {
@@ -16,7 +18,7 @@ export const router = createBrowserRouter([
       {
         path: "games",
         children: [
-          { index: true, element: <Games /> },
+          { element: <Games /> },
           { path: ":id", element: <GameById /> },
         ],
       },
