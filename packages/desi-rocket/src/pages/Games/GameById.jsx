@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import useGetGameById from "@/hooks/games/useGetGameById";
+import useGetGameById from "games/hooks/useGetGameById";
 
 export default function GameByName() {
   const { id: gameId } = useParams();

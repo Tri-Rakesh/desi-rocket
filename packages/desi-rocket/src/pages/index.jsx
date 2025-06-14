@@ -1,8 +1,8 @@
 import { createBrowserRouter, createHashRouter } from "react-router-dom";
-import Auth from "@/pages/Auth";
-import Home from "@/pages/Home";
-import Games from "@/pages/Games";
-import GameById from "@/pages/Games/GameById";
+import Auth from "desi-rocket/pages/Auth";
+import Home from "desi-rocket/pages/Home";
+import Games from "desi-rocket/pages/Games";
+import GameById from "desi-rocket/pages/Games/GameById";
 
 export const router = (
   import.meta.env.PROD ? createHashRouter : createBrowserRouter
