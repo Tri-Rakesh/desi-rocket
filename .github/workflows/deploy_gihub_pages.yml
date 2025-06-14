@@ -32,7 +32,7 @@ jobs:
           done
           tar \
             --dereference --hard-dereference \
-            --directory dist \
+            --directory packages/desi-rocket/dist \
             -cvf gh-pages-artifact.tar \
             --exclude=.git \
             --exclude=.github \
