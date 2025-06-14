@@ -15,8 +15,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Volta setup
+        uses: volta-cli/action@v4
 
       - name: Install dependencies
         run: yarn install --immutable
