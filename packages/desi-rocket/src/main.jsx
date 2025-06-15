@@ -16,7 +16,7 @@ const queryClient = new QueryClient({
   },
 });
 
-const router = import.meta.env.PROD ? createHashRouter : createBrowserRouter;
+const router = import.meta.env.VITE_USE_HASH_ROUTER ? createHashRouter : createBrowserRouter;
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

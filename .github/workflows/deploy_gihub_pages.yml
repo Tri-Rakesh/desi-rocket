@@ -22,7 +22,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Build project
-        run: yarn build -- --base="desi-rocket"
+        run: VITE_USE_HASH_ROUTER=true yarn build -- --base="desi-rocket"
 
       - name: Archive artifact
         shell: sh
