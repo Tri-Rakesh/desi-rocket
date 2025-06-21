@@ -5,6 +5,6 @@ export default function useGetGameById(gameId) {
   return useQuery({
     queryKey: ["game", gameId],
     queryFn: () =>
-      import("../../components/Games/" + GAME_TO_COMPONENT_MAP[gameId]),
+      import("../../components/games/" + GAME_TO_COMPONENT_MAP[gameId]),
   });
 }
