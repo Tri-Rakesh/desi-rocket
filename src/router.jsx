@@ -8,7 +8,7 @@ const router = import.meta.env.VITE_USE_HASH_ROUTER
   ? createHashRouter
   : createBrowserRouter;
 
-export default router([
+const appRouter = router([
   {
     path: "/",
     element: <Auth />,
@@ -27,3 +27,5 @@ export default router([
     ],
   },
 ]);
+
+export default appRouter;
