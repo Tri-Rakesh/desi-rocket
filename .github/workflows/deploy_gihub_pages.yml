@@ -1,0 +1,57 @@
+name: Deploy to github pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Volta setup
+        uses: volta-cli/action@v4
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build project
+        run: VITE_USE_HASH_ROUTER=true yarn build --base="desi-rocket"
+
+      - name: Archive artifact
+        shell: sh
+        run: chmod -c -R +rX dist
+
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v4
+        with:
+          name: github_pages
+          path: dist
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
